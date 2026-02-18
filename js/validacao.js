@@ -25,6 +25,15 @@ const mensagensDeErro = {
     nome: {
         valueMissing: 'O campo de nome não pode estar vazio.'
     },
+    telefone: {
+        valueMissing: 'O campo de telefone não pode estar vazio',
+        patternMismatch: 'O telefone informado não é válido.',
+        customError: 'O DDD digitado é inválido.'
+    },
+    instagram: {
+        valueMissing: 'O campo de instagram não pode estar vazio',
+        patternMismatch: 'O instagram informado não é válido.'
+    },
     email: {
         valueMissing: 'O campo de email não pode estar vazio.',
         typeMismatch: 'O email digitado não é válido.'
@@ -60,7 +69,8 @@ const mensagensDeErro = {
 const validadores = {
     dataNascimento:input => validaDataNascimento(input),
     cpf:input => validaCPF(input),
-    cep:input => recuperarCEP(input)
+    cep:input => recuperarCEP(input),
+    telefone:input => validaTelefone(input)
 }
 
 function mostraMensagemDeErro(tipoDeInput, input) {
@@ -72,6 +82,29 @@ function mostraMensagemDeErro(tipoDeInput, input) {
     })
     
     return mensagem
+}
+
+function validaTelefone(input) {
+    const telefoneLimpo = input.value.replace(/\D/g, '')
+    let mensagem = ''
+
+    const dddsValidos = [
+        '11', '12', '13', '14', '15', '16', '17', '18', '19',
+        '21', '22', '24', '27', '28', '31', '32', '33', '34',
+        '35', '37', '38', '41', '42', '43', '44', '45', '46',
+        '47', '48', '49', '51', '53', '54', '55', '61', '62',
+        '63', '64', '65', '66', '67', '68', '69', '71', '73',
+        '74', '75', '77', '79', '81', '82', '83', '84', '85',
+        '86', '87', '88', '89', '91', '92', '93', '94', '95',
+        '96', '97', '98', '99'
+    ]
+
+    const ddd = telefoneLimpo.substring(0,2)
+    if (!dddsValidos.includes(ddd)) {
+        mensagem = 'O DDD digitado não é válido.'
+    }
+
+    input.setCustomValidity(mensagem)
 }
 
 function validaDataNascimento(input) {
