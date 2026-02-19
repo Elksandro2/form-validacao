@@ -2,7 +2,9 @@
     height: 15.75rem;
 }
 
-.cadastro__preco-container, .cadastro__descricao-container {
+.cadastro__preco-container,
+.cadastro__descricao-container,
+.cadastro__quantidade-container {
     width: 50%;
 }
 

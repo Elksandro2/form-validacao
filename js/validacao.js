@@ -63,6 +63,9 @@ const mensagensDeErro = {
     },
     estado: {
         valueMissing: 'O campo de estado não pode estar vazio.'
+    },
+    quantidade: {
+        valueMissing: 'O campo de quantidade não pode estar vazio.'
     }
 }
 

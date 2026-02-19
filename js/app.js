@@ -7,3 +7,17 @@ inputs.forEach(input => {
         valida(evento.target)
     })
 })
+
+const inputPreco = document.getElementById('preco')
+
+if (inputPreco) {
+    const options = {
+        prefix: 'R$',
+        fixed: true,
+        fractionDigits: 2,
+        decimalSeparator: ',',
+        thousandsSeparator: '.',
+        cursor: 'end'
+    }
+    SimpleMaskMoney.setMask(inputPreco, options)
+}
